@@ -16,7 +16,7 @@ class ClassificationDataset(Dataset):
         :param tokenizer: a tokenizer object (e.g. RobertaTokenizer) that has a default for creating encodings for text
         :param text_col: the column name that stores the actual text
         """
-        self.dataset = pd.read_csv(path_to_dataset, sep="\t")
+        self.dataset = pd.read_csv(path_to_dataset)
         self.labels = self.dataset[label].values
         self.text_col = text_col
         # drop all columns with no text
@@ -49,7 +49,7 @@ class InferenceDataset(Dataset):
         :param tokenizer: a tokenizer object (e.g. RobertaTokenizer) that has a default for creating encodings for text
         :param text_col: the column name that stores the actual text
         """
-        self.dataset = pd.read_csv(path_to_dataset, sep="\t")
+        self.dataset = pd.read_csv(path_to_dataset)
         self.text_col = text_col
         # drop all columns with no text
         self.dataset = self.dataset[self.dataset[self.text_col].notna()]
@@ -79,7 +79,7 @@ class RegressionDataset(Dataset):
         :param tokenizer: a tokenizer object (e.g. RobertaTokenizer) that has a default for creating encodings for text
         :param text_col: the column name that stores the actual text
         """
-        self.dataset = pd.read_csv(path_to_dataset, sep="\t")
+        self.dataset = pd.read_csv(path_to_dataset)
         self.labels = self.dataset[label].values
         self.text_col = text_col
         # drop all columns with no text
